@@ -13,6 +13,10 @@ Caso não saiba como executar uma aplicação Spring Boot com Maven ou um execut
  3. Spring MVC, clique [aqui](https://blog.algaworks.com/spring-mvc/) para saber mais 
  
  4. [Maven](https://maven.apache.org/)
+ 
+ 5. [Flyway](https://flywaydb.org/)
+ 
+ 6. [spring data jpa](https://spring.io/projects/spring-data)
 
 
 
