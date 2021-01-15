@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cursoalgworks.osworks.domain.model.Cliente;
 import com.cursoalgworks.osworks.domain.repository.ClienteRepository;
+import com.cursoalgworks.osworks.domain.service.CadastroClienteService;
 
 @RestController
 @RequestMapping("/clientes")
@@ -27,6 +28,9 @@ public class ClienteController {
 	
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private CadastroClienteService cadastroCliente;
 	
 	@GetMapping
 	public List<Cliente> listarClientes() {
@@ -46,7 +50,7 @@ public class ClienteController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente adicionarCliente(@Valid @RequestBody Cliente cliente) {
-		return clienteRepository.save(cliente);
+		return cadastroCliente.salvar(cliente);
 	}
 	
 	@PutMapping("/{clienteId}")
@@ -56,7 +60,7 @@ public class ClienteController {
 		}else {
 			//encontrou um cliente para o id que foi passado 
 			cliente.setId(clienteId); //seta o id para o banco ver que o ciente já existe e eu só quero alterá-lo
-			clienteRepository.save(cliente);
+			cadastroCliente.salvar(cliente);
 			return ResponseEntity.ok(cliente);
 		}
 	}
@@ -66,7 +70,7 @@ public class ClienteController {
 		if (!clienteRepository.existsById(clienteId)) {
 			return ResponseEntity.notFound().build();
 		}else {
-			clienteRepository.deleteById(clienteId);
+			cadastroCliente.excluir(clienteId);
 			return ResponseEntity.noContent().build();
 		}
 	}
