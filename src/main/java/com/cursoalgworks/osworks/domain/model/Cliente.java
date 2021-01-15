@@ -14,13 +14,9 @@ public class Cliente {
 	private String nome;
 	private String email;
 	private String telefone;
-	private static long quantidadeCliente = 0;
+	//private static long quantidadeCliente = 0;
 	
-	public Cliente() {
-		//incrementa o id do cliente automaticamente
-		this.id = Cliente.quantidadeCliente;
-		Cliente.quantidadeCliente++;
-	}
+	public Cliente() {}
 	//getters and setters 
 	public Long getId() {
 		return id;
